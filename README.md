@@ -1,0 +1,3 @@
+# Event Ticket Booking System
+
+This repository contains a Node.js application that implements an event ticket booking system. It provides a RESTful API for initializing events, booking tickets, managing waiting lists, and handling cancellations. The project is built using **Express.js**, **Sequelize ORM**, and a **PostgreSQL database**, with a focus on concurrency handling, error management, and Test-Driven Development (TDD).
