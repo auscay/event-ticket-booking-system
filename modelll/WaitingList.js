@@ -1,7 +1,7 @@
 import { Sequelize, DataTypes } from 'sequelize';
 import { sequelize } from '../db/index.js';
 
-const Booking = sequelize.define('Booking', {
+const WaitingList = sequelize.define('WaitingList', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,7 +11,7 @@ const Booking = sequelize.define('Booking', {
     type: DataTypes.INTEGER,
     references: {
       model: 'Event', 
-      key: 'id',       // primary key in the Event table
+      key: 'id',
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
@@ -19,20 +19,15 @@ const Booking = sequelize.define('Booking', {
   userId: {
     type: DataTypes.INTEGER,
     references: {
-      model: 'User', 
+      model: 'Users', 
       key: 'id',
     },
     onUpdate: 'CASCADE',
-    onDelete: 'SET NULL',
-  },
-  quantity: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+    onDelete: 'CASCADE',
+  }
 }, {
-  tableName: 'bookings', // Specify the table name
-  timestamps: true, // Enable timestamps if you want createdAt and updatedAt columns
+  tableName: 'waiting_lists',
+  timestamps: true, // Add createdAt and updatedAt columns
 });
 
-
-export default Booking;
+export default WaitingList;
