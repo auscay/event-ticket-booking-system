@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import { testConnection } from "./db/index.js";
+import userRouter from "./user/user.route.js"
 import eventRouter from "./events/event.route.js"
-
+import bookingRouter from "./booking/booking.route.js"
 const app = express();
 dotenv.config();
 testConnection();
@@ -20,7 +21,14 @@ app.get("/api/v1", (req, res) => {
   res.json({ message: "Hello from API server!" });
 });
 
+// User routes
+app.use("/api/v1/user", userRouter)
+
+// Event routes
 app.use("/api/v1", eventRouter)
+
+// Bookking routes
+app.use("/api/v1", bookingRouter)
 
 
 
