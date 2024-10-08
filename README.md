@@ -14,3 +14,51 @@ This repository contains a Node.js application that implements an event ticket b
 - [Testing](#testing)
 - [Design Choices](#design-choices)
 - [Future Enhancements](#future-enhancements)
+
+## Features(#features)
+
+- Initialize a new event with a set number of tickets.
+- Book tickets for users concurrently, with thread safety.
+- Maintain a waiting list for users when tickets are sold out.
+- Automatically assign cancelled tickets to waiting list users.
+- RESTful API design for easy integration and scalability.
+- Test-Driven Development (TDD) using jest and supertest.
+- In-memory storage for rapid prototyping combined with a MySQL database for data persistence.
+
+## Installation
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- MySQL database
+- NPM or Yarn package manager
+
+### Installation Steps
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/event-booking-system.git
+    cd event-booking-system
+
+2. Install dependencies:
+    ```bash
+    npm install
+
+3. Set up the MySQL database and create a .env file in the root directory with the following environment variables:
+    ```mysql
+    DB_HOST=localhost
+    DB_PORT=3306
+    DB_USER=your_mysql_username
+    DB_PASSWORD=your_mysql_password
+
+4. Run database migrations if you wish to use Sequelize CLI to manage database schema: (not recommended)
+    ```mysql
+    npx sequelize-cli db:migrate
+
+5. Start the server:
+    ```bash
+    npm start
+
+The server will run on http://localhost:8000 by default.
+
+
