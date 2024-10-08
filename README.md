@@ -15,7 +15,7 @@ This repository contains a Node.js application that implements an event ticket b
 - [Design Choices](#design-choices)
 - [Future Enhancements](#future-enhancements)
 
-## Features(#features)
+## Features 
 
 - Initialize a new event with a set number of tickets.
 - Book tickets for users concurrently, with thread safety.
