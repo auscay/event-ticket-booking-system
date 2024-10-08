@@ -37,7 +37,7 @@ This repository contains a Node.js application that implements an event ticket b
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/event-booking-system.git
+    git clone https://github.com/auscay/event-ticket-booking-system.git
     cd event-booking-system
 
 2. Install dependencies:
