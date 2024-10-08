@@ -24,9 +24,13 @@ const WaitingList = sequelize.define('WaitingList', {
     },
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
-  }
+  },
+  quantity: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
 }, {
-  tableName: 'waiting_lists',
+  tableName: 'waitinglist',
   timestamps: true, // Add createdAt and updatedAt columns
 });
 

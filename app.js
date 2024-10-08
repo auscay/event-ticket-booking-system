@@ -27,7 +27,7 @@ app.use("/api/v1/user", userRouter)
 // Event routes
 app.use("/api/v1", eventRouter)
 
-// Bookking routes
+// Booking routes
 app.use("/api/v1", bookingRouter)
 
 
