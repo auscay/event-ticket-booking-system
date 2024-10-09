@@ -22,7 +22,7 @@ app.get("/api/v1", (req, res) => {
 });
 
 // User routes
-app.use("/api/v1/user", userRouter)
+app.use("/api/v1", userRouter)
 
 // Event routes
 app.use("/api/v1", eventRouter)

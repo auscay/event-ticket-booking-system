@@ -1,6 +1,7 @@
 // Import event model
 import Event from "../modelll/Event.js";
 import WaitingList from "../modelll/WaitingList.js";
+
 // Create event with a given number of tickets
 const createEvent = async (req, res) => {
   try {
