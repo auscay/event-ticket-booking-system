@@ -63,7 +63,7 @@ The server will run on http://localhost:8000 by default.
 
 ## Usage
 
-Checck the API documentation for detailed information on available endpoints and their usage.
+Check the API documentation for detailed information on available endpoints and their usage [here](https://https://documenter.getpostman.com/view/28440801/2sAXxQcWg2).
 
 ## API Endpoints
 
@@ -75,5 +75,63 @@ POST | /api/v1/book | Book tickets for a user | { "eventID": 1, "userId": 1, "qu
 ------|----------|-------------|---------------|--------
 POST | /api/v1/cancel | Cancel a booking | { "eventID": 1, "userId": 1, "quantity": 5 } | { "eventId": 1, "userId": 1, "quantity": 2, "status": "Cancelled" }
 ------|----------|-------------|---------------|--------
+GET | /api/v1/:eventID | Get details for a particular event | N/A | [ { "id": 1, "name": "Event Name", "totalTickets": 100, "availableTickets": 100, "waitingList": [] } ]
+
+## Concurrency Handling
+
+- Concurrency is handled using transactions in Sequelize to ensure that booking and cancellation operations are atomic.
+- Race conditions are mitigated by using row-level locks on the event data during operations.
+- Each transaction either fully succeeds or fails, maintaining consistent state in the database.
+
+### Example code for concurrency handling:
+```javascript
+const transaction = await sequelize.transaction();
+try {
+  const event = await Event.findByPk(eventId, { lock: true, transaction });
+  if (event.availableTickets > 0) {
+    await Booking.create({ userId, eventId }, { transaction });
+    event.availableTickets -= 1;
+    await event.save({ transaction });
+    await transaction.commit();
+  } else {
+    // Handle waiting list logic
+    await transaction.rollback();
+  }
+} catch (error) {
+  await transaction.rollback();
+}
+```
+
+## Testing
+
+Testing is done using Jest and Supertest.
+
+1. To run the tests:
+    ```bash
+    npm test
+
+2. The test results will be displayed in the console, indicating whether all tests passed.
+
+## Design Choices
+
+- **Node.js and Express.js**: For building a scalable and efficient server-side application.
+- **Sequelize ORM**: For database management and schema definition.
+- **MySQL**: For data persistence and scalability.
+- **ES6 Modules**: For modular and maintainable code.
+- **Jest and Supertest**: For testing and ensuring code quality.
+- **Rate Limiting**: For managing API usage and preventing abuse.
+- **Logging**: For monitoring and debugging.
+
+## Future Enhancements
+
+- Authentication and Authorization: Implement user authentication and authorization to secure the API.
+- Notification System: Notify users when their status changes (e.g., moved from waiting list to booked).
+- Performance Optimization: Use caching mechanisms for high-traffic events.
+
+
+
+
+
+
 
 
