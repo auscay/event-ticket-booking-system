@@ -61,4 +61,19 @@ This repository contains a Node.js application that implements an event ticket b
 
 The server will run on http://localhost:8000 by default.
 
+## Usage
+
+Checck the API documentation for detailed information on available endpoints and their usage.
+
+## API Endpoints
+
+Method | Endpoint | Description | Request Body | Response
+-------|----------|-------------|---------------|--------
+POST | /api/v1/events | Initialize a new event | { "name": "Event Name", "totalTickets": 100 } | { "id": 1, "name": "Event Name", "totalTickets": 100, "availableTickets": 100, "waitingList": [] }
+------|----------|-------------|---------------|--------
+POST | /api/v1/book | Book tickets for a user | { "eventID": 1, "userId": 1, "quantity": 10 } | { "eventId": 1, "userId": 1, "quantity": 2, "status": "Booked" }
+------|----------|-------------|---------------|--------
+POST | /api/v1/cancel | Cancel a booking | { "eventID": 1, "userId": 1, "quantity": 5 } | { "eventId": 1, "userId": 1, "quantity": 2, "status": "Cancelled" }
+------|----------|-------------|---------------|--------
+
 
