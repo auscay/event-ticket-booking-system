@@ -63,7 +63,7 @@ The server will run on http://localhost:8000 by default.
 
 ## Usage
 
-Check the API documentation for detailed information on available endpoints and their usage [here](https://https://documenter.getpostman.com/view/28440801/2sAXxQcWg2).
+Check the API documentation for detailed information on available endpoints and their usage [here](https://documenter.getpostman.com/view/28440801/2sAXxQcWg2).
 
 ## API Endpoints
 
